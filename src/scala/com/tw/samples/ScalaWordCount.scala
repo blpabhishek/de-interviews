@@ -10,7 +10,7 @@ object ScalaWordCount{
             System.exit(1)
         }
         val inputFile:String = args(0)
-        val sparkConf: SparkConf = new SparkConf().setAppName("JavaWordCount")
+        val sparkConf: SparkConf = new SparkConf().setAppName("JavaWordCount").setMaster("local")
         val sc: SparkContext = new SparkContext(sparkConf)
         val textFile = sc.textFile(inputFile)
         val counts: RDD[(String, Int)] = wordCount(textFile)
